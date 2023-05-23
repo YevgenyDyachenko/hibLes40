@@ -1,5 +1,6 @@
 package com.rd.hibles40.rest;
 
+import com.rd.hibles40.dto.StudentDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class StudentController {
     private final StudentService studentService;
 
     @GetMapping("/students")
-    public ResponseEntity<List<Student>> findAll() {
+    public ResponseEntity<List<StudentDto>> findAll() {
         return ResponseEntity.ok(studentService.findAll());
     }
 
@@ -48,12 +49,12 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-//    @PostMapping("/students/{id}/groups/{groupId}")
-//    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Long groupId) {
-//        studentService.addGroup(id, groupId);
-//
-//        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
-//    }
+    @PostMapping("/students/{id}/groups/{groupId}")
+    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Long groupId) {
+        studentService.addGroup(id, groupId);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
 
     @DeleteMapping("/students/{id}")
     public void deleteById(@PathVariable Long id) {
