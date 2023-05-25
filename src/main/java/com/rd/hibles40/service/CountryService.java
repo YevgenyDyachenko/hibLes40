@@ -15,22 +15,22 @@ public class CountryService {
 
     private final CountryRepository countryRepository;
 
-    public void save(County studentGroup) {
-        countryRepository.save(studentGroup);
+    public void save(County county) {
+        countryRepository.save(county);
     }
 
     public List<CountryDto> findAll() {
         return countryRepository.findAll()
                 .stream()
-                .map(CountryService::buildStudentGroupDto)
+                .map(CountryService::buildCountryDto)
                 .collect(Collectors.toList());
     }
 
-    private static CountryDto buildStudentGroupDto(County studentGroup) {
+    private static CountryDto buildCountryDto(County county) {
         return CountryDto.builder()
-                .id(studentGroup.getId())
-                .name(studentGroup.getName())
-                .citiesName(studentGroup.getCities().stream()
+                .id(county.getId())
+                .name(county.getName())
+                .citiesName(county.getCities().stream()
                         .map(City::getName)
                         .collect(Collectors.toList()))
                 .build();

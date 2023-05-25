@@ -15,15 +15,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CountryController {
 
-    private final CountryService studentGroupService;
+    private final CountryService countryService;
 
     @PostMapping("/countries")
-    public void save(@RequestBody County studentGroup) {
-        studentGroupService.save(studentGroup);
+    public void save(@RequestBody County county) {
+        countryService.save(county);
     }
 
     @GetMapping("/countries")
     public List<CountryDto> findAll() {
-        return studentGroupService.findAll();
+        return countryService.findAll();
     }
 }

@@ -20,6 +20,7 @@ public class County {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "studentGroup")
+    @OneToMany(mappedBy = "country")
+   
     private List<City> cities;
 }

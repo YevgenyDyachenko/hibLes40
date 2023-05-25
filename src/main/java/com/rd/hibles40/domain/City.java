@@ -18,10 +18,12 @@ public class City {
     private String name;
     @Column
     private int age;
+
     @Column
     private String address;
 
     @ManyToOne
-    @JoinColumn(name="student_group_id")
-    private County studentGroup;
+   @JoinColumn(name="country_id")
+
+    private County country;
 }

@@ -16,47 +16,49 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CityService {
 
-    private final CityRepository studentRepository;
+    private final CityRepository cityRepository;
     private final CountryRepository countryRepository;
 
     public List<CityDto> findAll() {
-        return studentRepository.findAll().stream()
-                .map(CityService::buildStudentDto)
+        return cityRepository.findAll().stream()
+                .map(CityService::buildCityDto)
                 .collect(Collectors.toList());
     }
 
-    private static CityDto buildStudentDto(City city) {
-        var groupName = "NO GROUP";
-        if (city.getStudentGroup() != null) {
-            groupName = city.getStudentGroup().getName();
+    private static CityDto buildCityDto(City city) {
+        var countryName = "NO COUNTRY";
+
+        if (city.getCountry() != null) {
+            countryName = city.getCountry().getName();
+
         }
         return CityDto.builder()
                 .id(city.getId())
                 .name(city.getName())
                 .age(city.getAge())
                 .address(city.getAddress())
-                .countryName(groupName)
+                .countryName(countryName)
                 .build();
     }
 
     public Optional<City> findById(Long id) {
 
-        return studentRepository.findById(id);
+        return cityRepository.findById(id);
     }
 
     public Optional<City> findByName(String name) {
-        return studentRepository.findCityByName(name);
+        return cityRepository.findCityByName(name);
     }
 
     public void save(City city) {
 
-        studentRepository.save(city);
+        cityRepository.save(city);
     }
-    public void addGroup(Long studentId, Long groupId) {
-        var group = countryRepository.findById(groupId).get();
-        var student = studentRepository.findById(studentId).get();
-        student.setStudentGroup(group);
+    public void addGroup(Long cityId, Long groupId) {
+        var county = countryRepository.findById(groupId).get();
+        var city = cityRepository.findById(cityId).get();
+        city.setCountry(county);
 
-        studentRepository.save(student);
+        cityRepository.save(city);
     }
 }
