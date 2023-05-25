@@ -49,9 +49,9 @@ public class CityController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("/cities/{id}/groups/{groupId}")
-    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Long groupId) {
-        cityService.addGroup(id, groupId);
+    @PostMapping("/cities/{id}/countries/{countryId}")
+    public ResponseEntity<Void> update(@PathVariable Long id, @PathVariable Long countryId) {
+        cityService.addGroup(id, countryId);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
