@@ -1,14 +1,16 @@
 package com.rd.hibles40.dto;
 
+
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Builder
-public class StudentGroupDto {
+
+public class CityDto {
     private Long id;
     private String name;
-    private List<String> studentsName;
+    private int age;
+    private String address;
+    private String countryName;
 }

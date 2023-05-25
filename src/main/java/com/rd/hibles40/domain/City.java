@@ -1,25 +1,27 @@
 package com.rd.hibles40.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.*;
 
 @Data
 @Table
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentGroup {
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String name;
+    @Column
+    private int age;
+    @Column
+    private String address;
 
-    @OneToMany(mappedBy = "studentGroup")
-    private List<Student> students;
+    @ManyToOne
+    @JoinColumn(name="student_group_id")
+    private County studentGroup;
 }

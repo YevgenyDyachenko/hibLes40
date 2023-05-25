@@ -1,8 +1,8 @@
 package com.rd.hibles40.rest;
 
-import com.rd.hibles40.domain.StudentGroup;
-import com.rd.hibles40.dto.StudentGroupDto;
-import com.rd.hibles40.service.StudentGroupService;
+import com.rd.hibles40.domain.County;
+import com.rd.hibles40.dto.CountryDto;
+import com.rd.hibles40.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,17 +13,17 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class StudentGroupController {
+public class CountryController {
 
-    private final StudentGroupService studentGroupService;
+    private final CountryService studentGroupService;
 
-    @PostMapping("/studentGroups")
-    public void save(@RequestBody StudentGroup studentGroup) {
+    @PostMapping("/countries")
+    public void save(@RequestBody County studentGroup) {
         studentGroupService.save(studentGroup);
     }
 
-    @GetMapping("/studentGroups")
-    public List<StudentGroupDto> findAll() {
+    @GetMapping("/countries")
+    public List<CountryDto> findAll() {
         return studentGroupService.findAll();
     }
 }
